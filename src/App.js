@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import ChannelList from './Components/ChannelList';
+import Player from './Components/Player';
+import "./App.css";
+const App = () => {
+  const [currentUrl, setCurrentUrl] = useState('');
 
-function App() {
+  const handlePlay = (url) => {
+    setCurrentUrl(url);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+         <div className="app">
+        <p>Welcome</p>
+      </div>
+      <div className='player'>
+        <div className='mainPlayer'>
+        {currentUrl && <Player url={currentUrl} />}
+        </div>
+
+      </div>
+      <div className='container'>
+      <div class="row">
+      <ChannelList onPlay={handlePlay} />
+      </div>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
